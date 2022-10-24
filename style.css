@@ -1,0 +1,170 @@
+:root{
+    --main-color:blue; 
+    --secondary-color:black;
+    --backgorund-color:white;
+
+    --gap: 1.1rem;
+    --border-radius: 5px;
+
+    --padding: 1rem;
+    --btn-padding: 0.75rem;
+    --margin: 1.3rem;
+
+    --font-lg: 1.3rem;
+    --font-xlg: 1.8rem;
+    --font-sl: 0.8rem;
+    --font-md: 1rem;
+}
+
+/* Main Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition-property: color, scale(), rotate();
+    transition-duration: .08s;
+    transition-timing-function: ease-in;
+}
+
+html {
+    font-size: 16px;
+    /* user-select: none; */
+    height: 100%;
+    background-color: white;
+    padding: var(--padding);
+    display: flex;
+    justify-content: center;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+p {
+    font-size: var(--font-md);
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+    color: var(--main-color);
+}
+
+h1{
+    font-size: var(--font-xlg);
+    color: var(--secondary-color);
+}
+
+h2 {
+    font-size: var(--font-lg);
+}
+
+h4 {
+    font-size: 1.15rem;
+}
+
+button {
+    cursor: pointer;
+}
+
+i {
+    font-size: var(--font-lg);
+    color: var(--main-color);
+}
+
+body{
+    background-color: var(--backgorund-color);
+    height: 100%;
+    width: 100%;
+    max-width: 1440px;
+    border:1px solid;
+    border-image: 
+    linear-gradient(
+      to bottom, 
+      blue, 
+      rgba(0, 0, 0, 0)
+    ) 1 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header section */
+
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+header>button {
+    font-size: var(--font-md);
+    font-weight: bold;
+}
+
+/* Main section */
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+}
+
+main>button {
+    border: 2px dashed var(--main-color);
+    padding: 0.5rem 4rem;
+    border-radius: 4px;
+}
+
+main>button>i{
+    margin-right: 1rem;
+}
+
+main>section {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-items: center;
+    gap: var(--gap);
+}
+
+main>section>article {
+    border: 3px solid var(--main-color);
+    border-radius: 1rem;
+    padding: var(--padding);
+    max-width: 700px;
+    min-width: 400px;
+    display: flex;
+    justify-content: space-around;
+}
+
+article>img {
+    max-width: 120px;
+    border: 2px groove var(--main-color);
+}
+
+.cover_title {
+    transform: translate(-120px,55px);
+    display: inline-block;
+}
+
+.book_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.btn-container{
+    margin-top: 4rem;
+    display: flex;
+    gap: var(--gap);
+}

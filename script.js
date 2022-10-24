@@ -16,6 +16,4 @@ function addBooktoLibrary(book_title, book_author, book_pages, book_read) {
 }
 
 addBooktoLibrary(" The Hobbit", "Tolkien", 300, "readed");
-addBooktoLibrary("A Clash of Kings", "George rR.R. Martin", 900, "not readed");
-
-console.log(library[1].title);
+addBooktoLibrary("A Clash of Kings", "George rR.R. Martin", 890, "not readed");
