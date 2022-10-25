@@ -1,14 +1,13 @@
 let library = [];
-var book_counter = 0;
 const library_section = document.getElementById("library");
+let book_counter = 1;
 
-
-function Books(title, author, pages, read){
+function Books(title, author, pages, read, book_id){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.nth_book = book_counter;
+    this.id = book_id;
 }
 
 Books.prototype.info = function(){
@@ -23,47 +22,43 @@ function closeForm() {
     document.getElementById("addBook-popup").style.display = "none";
 }
 
-function addBook(){
-    library.push(new Books(document.getElementsByName("book-title")[0].value, 
-    document.getElementsByName("book-author")[0].value, 
-    document.getElementsByName("book-pages")[0].value, 
-    "not readed"));
-    const book_card = 
-            `
-                <article class="book">
-                <img src="images/Book_Covers/cover (${Math.floor(Math.random()*7)}).png" alt="">
-                <div class="book-info">
-                    <p class="book-title">Title of book : ${library[book_counter].title}</p>
-                    <p>Author of book : ${library[book_counter].title}</p>
-                    <p>Pages : ${library[book_counter].author}</p>
-                    <p>Did you read this book : ${library[book_counter].pages}</p>
-                    <div class="btn-container">
-                        <button class="btn">Edit</button>
-                        <button class="btn red-btn">Delete</button>
-                    </div>
-                </div>
-                </article>
-            `;
-    library_section.insertAdjacentHTML("beforeend", book_card);
-    return book_counter++;
+// create new Object with input values, book_counter and pushes that object to library array,
+// call displayLibrary which shows all Books objects in library array
+
+function addBook(){ 
+    library.push(new Books(
+        document.getElementsByName("book-title")[0].value, 
+        document.getElementsByName("book-author")[0].value, 
+        document.getElementsByName("book-pages")[0].value, 
+        "not readed", book_counter));
+    displayLibrary();
+    book_counter++;
 }
 
-for (book of library) {
-    const book_card = 
+function displayLibrary() {
+    library_section.textContent = " ";
+    for (let book of library) {
+        const book_card = 
         `
             <article class="book">
-            <img src="images/Book_Covers/cover (${Math.floor(Math.random()*7)}).png" alt="">
+            <img src="images/Book_Covers/cover (${book.id % 8}).png" alt="">
             <div class="book-info">
                 <p class="book-title">Title of book : ${book.title}</p>
                 <p>Author of book : ${book.author}</p>
                 <p>Pages : ${book.pages}</p>
                 <p>Did you read this book : ${book.read}</p>
                 <div class="btn-container">
-                    <button class="btn">Edit</button>
-                    <button class="btn red-btn">Delete</button>
+                    <button class="btn" onclick="editBook()">Edit</button>
+                    <button class="btn red-btn" id="book-${book.id}" onclick="deleteBook(${book.id})">Delete</button>
                 </div>
             </div>
             </article>
-        `;
+    `;
     library_section.insertAdjacentHTML("beforeend", book_card);
+    }
+}
+
+function deleteBook(delete_id) {
+    library.splice(library.indexOf(library.find(x => x.id === delete_id)),1);
+    displayLibrary();
 }
