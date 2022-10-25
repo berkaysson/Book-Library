@@ -15,28 +15,52 @@ Books.prototype.info = function(){
     return (`${this.title} by ${this.author}, ${this.pages}, ${this.read}`);
 }
 
-function addBookstoLibrary(book_title, book_author, book_pages, book_read) {
-    // console.log(book_title.replace(/ /g,"_"));
-    library.push(new Books(book_title,book_author,book_pages,book_read));
-    return book_counter++;
+function openForm() {
+    document.getElementById("addBook-popup").style.display = "block";
+  }
+  
+function closeForm() {
+    document.getElementById("addBook-popup").style.display = "none";
 }
 
-addBookstoLibrary("The Hobbit", "Tolkien", 300, "readed");
-addBookstoLibrary("A Clash of Kings", "George R.R. Martin", 890, "not readed");
+function addBook(){
+    library.push(new Books(document.getElementsByName("book-title")[0].value, 
+    document.getElementsByName("book-author")[0].value, 
+    document.getElementsByName("book-pages")[0].value, 
+    "not readed"));
+    const book_card = 
+            `
+                <article class="book">
+                <img src="images/Book_Covers/cover (${Math.floor(Math.random()*7)}).png" alt="">
+                <div class="book-info">
+                    <p class="book-title">Title of book : ${library[book_counter].title}</p>
+                    <p>Author of book : ${library[book_counter].title}</p>
+                    <p>Pages : ${library[book_counter].author}</p>
+                    <p>Did you read this book : ${library[book_counter].pages}</p>
+                    <div class="btn-container">
+                        <button class="btn">Edit</button>
+                        <button class="btn red-btn">Delete</button>
+                    </div>
+                </div>
+                </article>
+            `;
+    library_section.insertAdjacentHTML("beforeend", book_card);
+    return book_counter++;
+}
 
 for (book of library) {
     const book_card = 
         `
             <article class="book">
             <img src="images/Book_Covers/cover (${Math.floor(Math.random()*7)}).png" alt="">
-            <div class="book_info">
-                <p class="book_title">Title of book :${book.title}</p>
-                <p>Author of book :${book.author}</p>
-                <p>Pages :${book.pages}</p>
+            <div class="book-info">
+                <p class="book-title">Title of book : ${book.title}</p>
+                <p>Author of book : ${book.author}</p>
+                <p>Pages : ${book.pages}</p>
                 <p>Did you read this book : ${book.read}</p>
                 <div class="btn-container">
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <button class="btn">Edit</button>
+                    <button class="btn red-btn">Delete</button>
                 </div>
             </div>
             </article>

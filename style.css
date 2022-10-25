@@ -77,6 +77,10 @@ i {
     color: var(--main-color);
 }
 
+label{
+    font-weight: bold;
+}
+
 body{
     background-color: var(--backgorund-color);
     height: 100%;
@@ -152,12 +156,12 @@ article>img {
     border: 2px groove var(--main-color);
 }
 
-.cover_title {
+.cover-title {
     transform: translate(-120px,55px);
     display: inline-block;
 }
 
-.book_info{
+.book-info{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -167,4 +171,24 @@ article>img {
     margin-top: 4rem;
     display: flex;
     gap: var(--gap);
+}
+
+/* Forms */
+
+.addBook-popup {
+    display: none;
+    position: fixed;
+    z-index: 9;
+    padding: var(--padding);
+    background-color: white;
+}
+
+.addBook-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: var(--gap);
+    /* min-height: 100vh; */
 }

@@ -19,16 +19,33 @@
     </header>
 
     <main id="main">
-        <button><i class="fa-regular fa-square-plus"></i> Add New Book</button>
+        <button class="addBook" onclick="openForm()"><i class="fa-regular fa-square-plus"></i> Add New Book</button>
+        <div class="addBook-popup" id="addBook-popup">
+            <form action="" class="addBook-form">
+                <h2>Add New Book</h2>
+                <input type="text" placeholder="Book's Title" name="book-title" required>
+                <input type="text" placeholder="Book's Author" name="book-author" required>
+                <input type="number" placeholder="Book's Pages" name="book-pages" required>
+                <div>
+                    <input type="checkbox" name="book-read" onclick="readToggle()">
+                    <span>Not readed</span>
+                </div>
+                <div>
+                    <button type="button" class="btn" onclick="addBook()">Submit Book</button>
+                    <button type="button" class="btn red-btn" onclick="closeForm()">Close</button>
+                </div>
+            </form>
+        </div>
+        
         <section id="library">
             <!-- <article class="book">
                     <img src="images/Book_Covers/cover.png" alt="">
-                    <span class="cover_title">book_title</span>
-                    <div class="book_info">
-                        <p class="book_title">book_title</p>
-                        <p>book_author</p>
-                        <p>book_pages</p>
-                        <p>book_read</p>
+                    <span class="cover-title">book-title</span>
+                    <div class="book-info">
+                        <p class="book-title">book-title</p>
+                        <p>book-author</p>
+                        <p>book-pages</p>
+                        <p>book-read</p>
                         <div class="btn-container">
                             <button>Edit</button>
                             <button>Delete</button>
