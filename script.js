@@ -22,7 +22,7 @@ function closeForm() {
     document.getElementById("addBook-popup").style.display = "none";
 }
 
-// create new Object with input values, book_counter and pushes that object to library array,
+// addBook(), creates new Object with input values and book_counter value and pushes that object to library array,
 // call displayLibrary which shows all Books objects in library array
 
 function addBook(){ 
@@ -30,7 +30,8 @@ function addBook(){
         document.getElementsByName("book-title")[0].value, 
         document.getElementsByName("book-author")[0].value, 
         document.getElementsByName("book-pages")[0].value, 
-        "not readed", book_counter));
+        document.getElementsByName("book-read")[0].value, 
+        book_counter));
     displayLibrary();
     book_counter++;
 }
@@ -41,7 +42,7 @@ function displayLibrary() {
         const book_card = 
         `
             <article class="book">
-            <img src="images/Book_Covers/cover (${book.id % 8}).png" alt="">
+            <img src="images/Book_Covers/cover (${book.id % 7}).png" alt="">
             <div class="book-info">
                 <p class="book-title">Title of book : ${book.title}</p>
                 <p>Author of book : ${book.author}</p>
@@ -61,4 +62,8 @@ function displayLibrary() {
 function deleteBook(delete_id) {
     library.splice(library.indexOf(library.find(x => x.id === delete_id)),1);
     displayLibrary();
+}
+
+function toggle(button) {
+    button.value=(button.value=="Readed")?"Not Readed":"Readed";
 }

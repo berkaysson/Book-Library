@@ -26,10 +26,7 @@
                 <input type="text" placeholder="Book's Title" name="book-title" required>
                 <input type="text" placeholder="Book's Author" name="book-author" required>
                 <input type="number" placeholder="Book's Pages" name="book-pages" required>
-                <div>
-                    <input type="checkbox" name="book-read" onclick="readToggle()">
-                    <span>Not readed</span>
-                </div>
+                <input type="button" value="Not Readed" name="book-read" class="btn input-btn" onclick="toggle(this)">
                 <div>
                     <button type="button" class="btn" onclick="addBook()">Submit Book</button>
                     <button type="button" class="btn red-btn" onclick="closeForm()">Close</button>
