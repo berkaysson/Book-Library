@@ -192,3 +192,21 @@ article>img {
     gap: var(--gap);
     /* min-height: 100vh; */
 }
+
+.editBook-popup {
+    display: none;
+    position: fixed;
+    z-index: 8;
+    padding: var(--padding);
+    background-color: white;
+}
+
+.editBook-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: var(--gap);
+    /* min-height: 100vh; */
+}

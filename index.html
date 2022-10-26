@@ -19,7 +19,7 @@
     </header>
 
     <main id="main">
-        <button class="addBook" onclick="openForm()"><i class="fa-regular fa-square-plus"></i> Add New Book</button>
+        <button class="addBook" onclick="openForm(`add`)"><i class="fa-regular fa-square-plus"></i> Add New Book</button>
         <div class="addBook-popup" id="addBook-popup">
             <form action="" class="addBook-form">
                 <h2>Add New Book</h2>
@@ -29,7 +29,20 @@
                 <input type="button" value="Not Readed" name="book-read" class="btn input-btn" onclick="toggle(this)">
                 <div>
                     <button type="button" class="btn" onclick="addBook()">Submit Book</button>
-                    <button type="button" class="btn red-btn" onclick="closeForm()">Close</button>
+                    <button type="button" class="btn red-btn" onclick="closeForm(`add`)">Close</button>
+                </div>
+            </form>
+        </div>
+        <div class="editBook-popup" id="editBook-popup">
+            <form action="" class="editBook-form">
+                <h2>Edit <span id="editBook-title"></span></h2>
+                <input type="text" placeholder="Book's Title" name="editBook-title" required>
+                <input type="text" placeholder="Book's Author" name="editBook-author" required>
+                <input type="number" placeholder="Book's Pages" name="editBook-pages" required>
+                <input type="button" value="Not Readed" name="editBook-read" class="btn input-btn" onclick="toggle(this)">
+                <div>
+                    <button name="editBook-button" type="button" class="btn">Edit Book</button>
+                    <button type="button" class="btn red-btn" onclick="closeForm(`edit`)">Close</button>
                 </div>
             </form>
         </div>

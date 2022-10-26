@@ -1,5 +1,6 @@
 let library = [];
 const library_section = document.getElementById("library");
+const editBook_title = document.getElementById("editBook-title");
 let book_counter = 1;
 
 function Books(title, author, pages, read, book_id){
@@ -14,12 +15,16 @@ Books.prototype.info = function(){
     return (`${this.title} by ${this.author}, ${this.pages}, ${this.read}`);
 }
 
-function openForm() {
-    document.getElementById("addBook-popup").style.display = "block";
-  }
+function openForm(form_name, edit_id) {
+    document.getElementById(`${form_name}Book-popup`).style.display = "block";
+    if (form_name === "edit") {
+        editBook_title.textContent = library[library.indexOf(library.find(x => x.id === edit_id))].title;
+        document.getElementsByName("editBook-button")[0].setAttribute("onclick", `editBook(${edit_id})`);
+    }
+}
   
-function closeForm() {
-    document.getElementById("addBook-popup").style.display = "none";
+function closeForm(form_name) {
+    document.getElementById(`${form_name}Book-popup`).style.display = "none";
 }
 
 // addBook(), creates new Object with input values and book_counter value and pushes that object to library array,
@@ -53,7 +58,7 @@ function displayLibrary() {
                 <p>Pages : ${book.pages}</p>
                 <p>Did you read this book : ${book.read}</p>
                 <div class="btn-container">
-                    <button class="btn" onclick="editBook()">Edit</button>
+                    <button class="btn" onclick="openForm(\`edit\`,${book.id})">Edit</button>
                     <button class="btn red-btn" id="book-${book.id}" onclick="deleteBook(${book.id})">Delete</button>
                 </div>
             </div>
@@ -70,4 +75,13 @@ function deleteBook(delete_id) {
 
 function toggle(button) {
     button.value=(button.value=="Readed")?"Not Readed":"Readed";
+}
+
+function editBook(edit_id) {
+    library[library.indexOf(library.find(x => x.id === edit_id))].title = document.getElementsByName("editBook-title")[0].value;
+    library[library.indexOf(library.find(x => x.id === edit_id))].author = document.getElementsByName("editBook-author")[0].value;
+    library[library.indexOf(library.find(x => x.id === edit_id))].pages = document.getElementsByName("editBook-pages")[0].value;
+    library[library.indexOf(library.find(x => x.id === edit_id))].read = document.getElementsByName("editBook-read")[0].value;
+    displayLibrary();
+    closeForm("edit");
 }
