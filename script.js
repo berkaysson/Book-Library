@@ -34,6 +34,10 @@ function addBook(){
         book_counter));
     displayLibrary();
     book_counter++;
+    document.getElementsByName("book-title")[0].value = "", 
+    document.getElementsByName("book-author")[0].value = "", 
+    document.getElementsByName("book-pages")[0].value = "",
+    document.getElementsByName("book-read")[0].value="Not Readed"; 
 }
 
 function displayLibrary() {
