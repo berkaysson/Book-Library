@@ -7,47 +7,54 @@
     <script src="https://kit.fontawesome.com/5d0d5452e6.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>myLibrary - A Book Library</title>
 </head>
 <body>
-
-    <header>
+    
+    <header class="filtered">
         <a href="#"><h1>myLibrary</h1></a>
-        <button>Log In</button>
+        <button class="btn">Log In</button>
     </header>
 
     <main id="main">
-        <button class="addBook" onclick="openForm(`add`)"><i class="fa-regular fa-square-plus"></i> Add New Book</button>
-        <div class="addBook-popup" id="addBook-popup">
-            <form action="" class="addBook-form">
+        <div class="addBook-popup popup" id="addBook-popup">
+            <form action="" class="addBook-form popup-form">
                 <h2>Add New Book</h2>
                 <input type="text" placeholder="Book's Title" name="book-title" required>
                 <input type="text" placeholder="Book's Author" name="book-author" required>
                 <input type="number" placeholder="Book's Pages" name="book-pages" required>
                 <input type="button" value="Not Readed" name="book-read" class="btn input-btn" onclick="toggle(this)">
-                <div>
+                <div class="btn-container">
                     <button type="button" class="btn" onclick="addBook()">Submit Book</button>
                     <button type="button" class="btn red-btn" onclick="closeForm(`add`)">Close</button>
                 </div>
             </form>
         </div>
-        <div class="editBook-popup" id="editBook-popup">
-            <form action="" class="editBook-form">
+        <div class="editBook-popup popup" id="editBook-popup">
+            <form action="" class="editBook-form popup-form">
                 <h2>Edit <span id="editBook-title"></span></h2>
                 <input type="text" placeholder="Book's Title" name="editBook-title" required>
                 <input type="text" placeholder="Book's Author" name="editBook-author" required>
                 <input type="number" placeholder="Book's Pages" name="editBook-pages" required>
                 <input type="button" value="Not Readed" name="editBook-read" class="btn input-btn" onclick="toggle(this)">
-                <div>
+                <div class="btn-container">
                     <button name="editBook-button" type="button" class="btn">Edit Book</button>
                     <button type="button" class="btn red-btn" onclick="closeForm(`edit`)">Close</button>
                 </div>
             </form>
         </div>
         
-        <section id="library">
+        <table id="library" class="filtered">
+            <tr>
+                <th>Cover</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Status</th>
+            </tr>
+            <tr></tr>
             <!-- <article class="book">
                     <img src="images/Book_Covers/cover.png" alt="">
                     <span class="cover-title">book-title</span>
@@ -62,9 +69,8 @@
                         </div>
                     </div>
             </article> -->
-            
-    </article>
-        </section>
+        </table>
+        <button class="addBook filtered" onclick="openForm(`add`)"><i class="fa-regular fa-square-plus"></i> Add New Book</button>
     </main>
     
     <script src="script.js"></script>

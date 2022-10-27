@@ -21,10 +21,16 @@ function openForm(form_name, edit_id) {
         editBook_title.textContent = library[library.indexOf(library.find(x => x.id === edit_id))].title;
         document.getElementsByName("editBook-button")[0].setAttribute("onclick", `editBook(${edit_id})`);
     }
+    document.querySelectorAll(".filtered").forEach(el => {
+        el.style.filter = "blur(2px)"; 
+    });
 }
   
 function closeForm(form_name) {
     document.getElementById(`${form_name}Book-popup`).style.display = "none";
+    document.querySelectorAll(".filtered").forEach(el => {
+        el.style.filter = "blur(0px)"; 
+    });
 }
 
 // addBook(), creates new Object with input values and book_counter value and pushes that object to library array,
@@ -82,6 +88,10 @@ function editBook(edit_id) {
     library[library.indexOf(library.find(x => x.id === edit_id))].author = document.getElementsByName("editBook-author")[0].value;
     library[library.indexOf(library.find(x => x.id === edit_id))].pages = document.getElementsByName("editBook-pages")[0].value;
     library[library.indexOf(library.find(x => x.id === edit_id))].read = document.getElementsByName("editBook-read")[0].value;
+    document.getElementsByName("editBook-title")[0].value = "", 
+    document.getElementsByName("editBook-author")[0].value = "", 
+    document.getElementsByName("editBook-pages")[0].value = "",
+    document.getElementsByName("editBook-read")[0].value="Not Readed"; 
     displayLibrary();
     closeForm("edit");
 }
