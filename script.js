@@ -12,17 +12,19 @@ const $input = document.querySelectorAll("[data-type]");
 
 let book_counter = 1;
 
-function Books(title, author, pages, read, book_id){
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = book_id;
+class Books {
+    constructor(title, author, pages, read, book_id) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = book_id;
+    }
+    info() {
+        return (`${this.title} by ${this.author}, ${this.pages}, ${this.read}`);
+    }
 }
 
-Books.prototype.info = function(){
-    return (`${this.title} by ${this.author}, ${this.pages}, ${this.read}`);
-}
 
 function openForm(form_name, edit_id) {
     document.getElementById(`${form_name}Book-popup`).style.display = "block";

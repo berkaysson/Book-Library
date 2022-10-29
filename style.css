@@ -13,7 +13,7 @@
 
     --font-lg: 1.2rem;
     --font-xlg: 1.8rem;
-    --font-sl: 0.6rem;
+    --font-sl: 0.75rem;
     --font-md: 0.9rem;
 }
 
@@ -206,4 +206,13 @@ main{
 
 .filtered {
     filter: blur(0px);
+}
+
+.red-btn{
+    background-color: var(--danger-color);
+    border-color: var(--danger-color);
+}
+
+.input-btn {
+    font-size: var(--font-sl);
 }
