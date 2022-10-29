@@ -78,6 +78,20 @@ label{
     font-weight: bold;
 }
 
+table {
+    width: 100%;
+}
+
+th {
+    font-size: var(--font-md);
+    text-align: left;
+    padding: 0.8rem;
+    padding-bottom: 2px;
+    margin-right: 1rem;
+    border-bottom: 1px solid var(--secondary-color);
+    border-radius: 2px;
+}
+
 body{
     height: 100%;
     width: 100%;
@@ -131,19 +145,9 @@ main{
     margin-right: 1rem;
 }
 
-article>img {
-    display: none;
-    max-width: 120px;
-    border: 2px groove var(--main-color);
+#table-title>tr>th{
+    font-size: 1rem;
 }
-
-.book-info{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-
 
 /* Forms */
 
@@ -153,8 +157,8 @@ article>img {
     padding: var(--padding);
     background-color: var(--backgorund-color);
     border-radius: 6px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 2px 1px, rgba(0, 0, 0, 0.3) 0px 1px 3px 1px;    opacity: 1;
-    bottom: 0;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 2px 1px, rgba(0, 0, 0, 0.3) 0px 1px 3px 1px;
+    top: 10rem;
 }
 
 .popup-form {
