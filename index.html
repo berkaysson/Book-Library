@@ -19,59 +19,64 @@
     </header>
 
     <main id="main">
-        <div class="addBook-popup popup" id="addBook-popup">
-            <form action="" class="addBook-form popup-form">
-                <h2>Add New Book</h2>
-                <input type="text" placeholder="Book's Title" name="book-title" required>
-                <input type="text" placeholder="Book's Author" name="book-author" required>
-                <input type="number" placeholder="Book's Pages" name="book-pages" required>
-                <input type="button" value="Not Readed" name="book-read" class="btn input-btn" onclick="toggle(this)">
-                <div class="btn-container">
-                    <button type="button" class="btn" onclick="addBook()">Submit Book</button>
-                    <button type="button" class="btn red-btn" onclick="closeForm(`add`)">Close</button>
-                </div>
-            </form>
-        </div>
-        <div class="editBook-popup popup" id="editBook-popup">
-            <form action="" class="editBook-form popup-form">
-                <h2>Edit <span id="editBook-title"></span></h2>
-                <input type="text" placeholder="Book's Title" name="editBook-title" required>
-                <input type="text" placeholder="Book's Author" name="editBook-author" required>
-                <input type="number" placeholder="Book's Pages" name="editBook-pages" required>
-                <input type="button" value="Not Readed" name="editBook-read" class="btn input-btn" onclick="toggle(this)">
-                <div class="btn-container">
-                    <button name="editBook-button" type="button" class="btn">Edit Book</button>
-                    <button type="button" class="btn red-btn" onclick="closeForm(`edit`)">Close</button>
-                </div>
-            </form>
-        </div>
-        
-        <table id="library" class="filtered">
-            <tr>
-                <th>Cover</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Pages</th>
-                <th>Status</th>
+        <table id="table" class="filtered">`
+            <tbody id="table-title">
+                <tr>
+                    <!-- <th>Cover</th> -->
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Status</th>
+                </tr>
+            </tbody>
+            <tbody id="library">
+
+            </tbody>
+            <!-- 
+                <tr>
+                <th><img src="images/Book_Covers/cover (${book.id % 7}).png" alt=""></th>
+                <th><p class="book-title">${book.title}</p></th>
+                <th><p>${book.author}</p></th>
+                <th>${book.pages}</th>
+                <th>${book.read}</th>
+                <th><div class="btn-container">
+                    <button class="btn" onclick="openForm(\`edit\`,${book.id})">Edit</button>
+                    <button class="btn red-btn" id="book-${book.id}" onclick="deleteBook(${book.id})">Delete</button>
+                </div></th>
             </tr>
-            <tr></tr>
-            <!-- <article class="book">
-                    <img src="images/Book_Covers/cover.png" alt="">
-                    <span class="cover-title">book-title</span>
-                    <div class="book-info">
-                        <p class="book-title">book-title</p>
-                        <p>book-author</p>
-                        <p>book-pages</p>
-                        <p>book-read</p>
-                        <div class="btn-container">
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </div>
-                    </div>
-            </article> -->
+             -->
+
         </table>
+
         <button class="addBook filtered" onclick="openForm(`add`)"><i class="fa-regular fa-square-plus"></i> Add New Book</button>
     </main>
+
+    <div class="addBook-popup popup" id="addBook-popup">
+        <form action="" class="addBook-form popup-form">
+            <h2>Add New Book</h2>
+            <input type="text" placeholder="Book's Title" name="addBook-title" data-type="add">
+            <input type="text" placeholder="Book's Author" name="addBook-author" data-type="add">
+            <input type="number" placeholder="Book's Pages" name="addBook-pages" data-type="add">
+            <input type="button" value="Not Readed" name="addBook-read" class="btn input-btn" onclick="toggle(this)">
+            <div class="btn-container">
+                <button type="button" class="btn" onclick="addBook()">Submit Book</button>
+                <button type="button" class="btn red-btn" onclick="closeForm(`add`)">Close</button>
+            </div>
+        </form>
+    </div>
+    <div class="editBook-popup popup" id="editBook-popup">
+        <form action="" class="editBook-form popup-form">
+            <h2>Edit <span id="editBook-header"></span></h2>
+            <input type="text" placeholder="Book's Title" name="editBook-title" data-type="edit">
+            <input type="text" placeholder="Book's Author" name="editBook-author" data-type="edit">
+            <input type="number" placeholder="Book's Pages" name="editBook-pages" data-type="edit">
+            <input type="button" value="Not Readed" name="editBook-read" class="btn input-btn" onclick="toggle(this)">
+            <div class="btn-container">
+                <button name="editBook-button" type="button" class="btn">Edit Book</button>
+                <button type="button" class="btn red-btn" onclick="closeForm(`edit`)">Close</button>
+            </div>
+        </form>
+    </div>
     
     <script src="script.js"></script>
 </body>
