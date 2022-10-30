@@ -33,21 +33,21 @@ function openForm(form_name, edit_id) {
         document.getElementsByName("editBook-button")[0].setAttribute("onclick", `editBook(${edit_id})`);
     }
     document.querySelectorAll(".filtered").forEach(el => {
-        el.style.filter = "blur(2px)"; 
+        el.style.filter = "blur(2px)";
     });
 }
-  
+
 function closeForm(form_name) {
     document.getElementById(`${form_name}Book-popup`).style.display = "none";
     document.querySelectorAll(".filtered").forEach(el => {
-        el.style.filter = "blur(0px)"; 
+        el.style.filter = "blur(0px)";
     });
 }
 
 // addBook(), creates new Object with input values and book_counter value and pushes that object to library array,
 // call displayLibrary which shows all Books objects in library array
 
-function addBook(){
+function addBook() {
     for (el of $input) {
         if (el.getAttribute("data-type") == "add") {
             if (el.value == "") {
@@ -56,10 +56,10 @@ function addBook(){
         }
     }
     library.push(Book = new Books(
-        book_title.value, 
-        book_author.value, 
-        book_pages.value, 
-        book_read.value, 
+        book_title.value,
+        book_author.value,
+        book_pages.value,
+        book_read.value,
         book_counter));
     displayLibrary();
     clearFields();
@@ -67,7 +67,7 @@ function addBook(){
 }
 
 function deleteBook(delete_id) {
-    library.splice(library.indexOf(library.find(x => x.id === delete_id)),1);
+    library.splice(library.indexOf(library.find(x => x.id === delete_id)), 1);
     displayLibrary();
 }
 
@@ -89,7 +89,7 @@ function editBook(edit_id) {
 }
 
 function toggle(button) {
-    button.value=(button.value=="Readed")?"Not Readed":"Readed";
+    button.value = (button.value == "Readed") ? "Not Readed" : "Readed";
 }
 
 function clearFields() {
@@ -106,8 +106,8 @@ function clearFields() {
 function displayLibrary() {
     library_section.textContent = ``;
     for (let book of library) {
-        const book_card = 
-        `
+        const book_card =
+            `
         <tr>
         
         <th><p class="book-title">${book.title}</p></th>
@@ -120,6 +120,6 @@ function displayLibrary() {
         </div></th>
     </tr>
     `;
-    library_section.insertAdjacentHTML("beforeend", book_card);
+        library_section.insertAdjacentHTML("beforeend", book_card);
     }
 }

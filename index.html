@@ -1,84 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/5d0d5452e6.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/5d0d5452e6.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>myLibrary - A Book Library</title>
-</head>
-<body>
-    
+  </head>
+
+  <body>
     <header class="filtered">
-        <a href="#"><h1>myLibrary</h1></a>
-        <button class="btn">Log In</button>
+      <a href="#">
+        <h1>myLibrary</h1>
+      </a>
+      <button class="btn">Log In</button>
     </header>
 
     <main id="main">
-        <table id="table" class="filtered">`
-            <tbody id="table-title">
-                <tr>
-                    <!-- <th>Cover</th> -->
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Status</th>
-                    <th>Edit & Delete</th>
-                </tr>
-            </tbody>
-            <tbody id="library">
-
-            </tbody>
-            <!-- 
-                <tr>
-                <th><img src="images/Book_Covers/cover (${book.id % 7}).png" alt=""></th>
-                <th><p class="book-title">${book.title}</p></th>
-                <th><p>${book.author}</p></th>
-                <th>${book.pages}</th>
-                <th>${book.read}</th>
-                <th><div class="btn-container">
-                    <button class="btn" onclick="openForm(\`edit\`,${book.id})">Edit</button>
-                    <button class="btn red-btn" id="book-${book.id}" onclick="deleteBook(${book.id})">Delete</button>
-                </div></th>
-            </tr>
+      <p class="filtered">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
+        consequuntur dignissimos, quasi distinctio totam, provident dolor omnis
+        sunt sit perspiciatis reprehenderit voluptatem ea sint rerum.
+        Praesentium placeat ea explicabo quisquam ducimus, possimus sapiente
+        consectetur optio, quo sint aspernatur ullam. Atque voluptates dolorum
+        qui totam quibusdam reiciendis odio voluptatibus temporibus repellat.
+      </p>
+      <table id="table" class="filtered">
+        <tbody id="table-title">
+          <tr>
+            <!-- <th>Cover</th> -->
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Status</th>
+            <th>Edit & Delete</th>
+          </tr>
+        </tbody>
+        <tbody id="library"></tbody>
+        <!-- 
+        <tr>
+        <th><p class="book-title">${book.title}</p></th>
+            <th><p>${book.author}</p></th>
+            <th>${book.pages}</th>
+            <th>${book.read}</th>
+            <th><div class="btn-container">
+                <button class="btn" onclick="openForm(\`edit\`,${book.id})">Edit</button>
+                <button class="btn red-btn" id="book-${book.id}" onclick="deleteBook(${book.id})">Delete</button>
+            </div></th>
+        </tr>
              -->
+      </table>
 
-        </table>
-
-        <button class="addBook filtered" onclick="openForm(`add`)"><i class="fa-regular fa-square-plus"></i> Add New Book</button>
+      <button class="addBook filtered" onclick="openForm(`add`)">
+        <i class="fa-regular fa-square-plus"></i> Add New Book
+      </button>
     </main>
 
     <div class="addBook-popup popup" id="addBook-popup">
-        <form action="" class="addBook-form popup-form">
-            <h2>Add New Book</h2>
-            <input type="text" placeholder="Book's Title" name="addBook-title" data-type="add">
-            <input type="text" placeholder="Book's Author" name="addBook-author" data-type="add">
-            <input type="number" placeholder="Book's Pages" name="addBook-pages" data-type="add">
-            <input type="button" value="Not Readed" name="addBook-read" class="btn input-btn" onclick="toggle(this)">
-            <div class="btn-container">
-                <button type="button" class="btn" onclick="addBook()">Submit Book</button>
-                <button type="button" class="btn red-btn" onclick="closeForm(`add`)">Close</button>
-            </div>
-        </form>
+      <form action="" class="addBook-form popup-form">
+        <h2>Add New Book</h2>
+        <input
+          type="text"
+          placeholder="Book's Title"
+          name="addBook-title"
+          data-type="add"
+        />
+        <input
+          type="text"
+          placeholder="Book's Author"
+          name="addBook-author"
+          data-type="add"
+        />
+        <input
+          type="number"
+          placeholder="Book's Pages"
+          name="addBook-pages"
+          data-type="add"
+        />
+        <input
+          type="button"
+          value="Not Readed"
+          name="addBook-read"
+          class="btn input-btn"
+          onclick="toggle(this)"
+        />
+        <div class="btn-container">
+          <button type="button" class="btn" onclick="addBook()">
+            Submit Book
+          </button>
+          <button type="button" class="btn red-btn" onclick="closeForm(`add`)">
+            Close
+          </button>
+        </div>
+      </form>
     </div>
     <div class="editBook-popup popup" id="editBook-popup">
-        <form action="" class="editBook-form popup-form">
-            <h2>Edit <span id="editBook-header"></span></h2>
-            <input type="text" placeholder="Book's Title" name="editBook-title" data-type="edit">
-            <input type="text" placeholder="Book's Author" name="editBook-author" data-type="edit">
-            <input type="number" placeholder="Book's Pages" name="editBook-pages" data-type="edit">
-            <input type="button" value="Not Readed" name="editBook-read" class="btn input-btn" onclick="toggle(this)">
-            <div class="btn-container">
-                <button name="editBook-button" type="button" class="btn">Edit Book</button>
-                <button type="button" class="btn red-btn" onclick="closeForm(`edit`)">Close</button>
-            </div>
-        </form>
+      <form action="" class="editBook-form popup-form">
+        <h2>Edit <span id="editBook-header"></span></h2>
+        <input
+          type="text"
+          placeholder="Book's Title"
+          name="editBook-title"
+          data-type="edit"
+        />
+        <input
+          type="text"
+          placeholder="Book's Author"
+          name="editBook-author"
+          data-type="edit"
+        />
+        <input
+          type="number"
+          placeholder="Book's Pages"
+          name="editBook-pages"
+          data-type="edit"
+        />
+        <input
+          type="button"
+          value="Not Readed"
+          name="editBook-read"
+          class="btn input-btn"
+          onclick="toggle(this)"
+        />
+        <div class="btn-container">
+          <button name="editBook-button" type="button" class="btn">
+            Edit Book
+          </button>
+          <button type="button" class="btn red-btn" onclick="closeForm(`edit`)">
+            Close
+          </button>
+        </div>
+      </form>
     </div>
-    
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
