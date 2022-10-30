@@ -9,6 +9,7 @@ const book_pages = document.querySelector("input[name='addBook-pages']");
 const book_read = document.querySelector("input[name='addBook-read']");
 
 const $input = document.querySelectorAll("[data-type]");
+const $form = document.getElementsByClassName("popup");
 
 let book_counter = 1;
 
@@ -32,16 +33,10 @@ function openForm(form_name, edit_id) {
         editBook_header.textContent = library[library.indexOf(library.find(x => x.id === edit_id))].title;
         document.getElementsByName("editBook-button")[0].setAttribute("onclick", `editBook(${edit_id})`);
     }
-    document.querySelectorAll(".filtered").forEach(el => {
-        el.style.filter = "blur(2px)";
-    });
 }
 
 function closeForm(form_name) {
     document.getElementById(`${form_name}Book-popup`).style.display = "none";
-    document.querySelectorAll(".filtered").forEach(el => {
-        el.style.filter = "blur(0px)";
-    });
 }
 
 // addBook(), creates new Object with input values and book_counter value and pushes that object to library array,
@@ -55,7 +50,7 @@ function addBook() {
             }
         }
     }
-    library.push(Book = new Books(
+    library.push(newBook = new Books(
         book_title.value,
         book_author.value,
         book_pages.value,
@@ -64,6 +59,7 @@ function addBook() {
     displayLibrary();
     clearFields();
     book_counter++;
+    closeForm("add");
 }
 
 function deleteBook(delete_id) {
@@ -122,4 +118,12 @@ function displayLibrary() {
     `;
         library_section.insertAdjacentHTML("beforeend", book_card);
     }
+}
+
+window.onclick = function(event) {
+    for (let form of $form) {
+        if (event.target == form) {
+            form.style.display = "none";
+          }
+    } 
 }
